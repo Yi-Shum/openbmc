@@ -1,0 +1,122 @@
+diff --git a/arch/arm/boot/dts/aspeed-ast2600-evb.dts b/arch/arm/boot/dts/aspeed-ast2600-evb.dts
+index de83c0eb1d6e..dbc2e89eb746 100644
+--- a/arch/arm/boot/dts/aspeed-ast2600-evb.dts
++++ b/arch/arm/boot/dts/aspeed-ast2600-evb.dts
+@@ -7,7 +7,7 @@
+ #include <dt-bindings/gpio/aspeed-gpio.h>
+ 
+ / {
+-	model = "AST2600 EVB";
++	model = "AST2600 EVB 0726";
+ 	compatible = "aspeed,ast2600-evb", "aspeed,ast2600";
+ 
+ 	aliases {
+@@ -84,83 +84,6 @@ vccq_sdhci1: regulator-vccq-sdhci1 {
+ 	};
+ };
+ 
+-&mdio0 {
+-	status = "okay";
+-
+-	ethphy0: ethernet-phy@0 {
+-		compatible = "ethernet-phy-ieee802.3-c22";
+-		reg = <0>;
+-	};
+-};
+-
+-&mdio1 {
+-	status = "okay";
+-
+-	ethphy1: ethernet-phy@0 {
+-		compatible = "ethernet-phy-ieee802.3-c22";
+-		reg = <0>;
+-	};
+-};
+-
+-&mdio2 {
+-	status = "okay";
+-
+-	ethphy2: ethernet-phy@0 {
+-		compatible = "ethernet-phy-ieee802.3-c22";
+-		reg = <0>;
+-	};
+-};
+-
+-&mdio3 {
+-	status = "okay";
+-
+-	ethphy3: ethernet-phy@0 {
+-		compatible = "ethernet-phy-ieee802.3-c22";
+-		reg = <0>;
+-	};
+-};
+-
+-&mac0 {
+-	status = "okay";
+-
+-	phy-mode = "rgmii-rxid";
+-	phy-handle = <&ethphy0>;
+-
+-	pinctrl-names = "default";
+-	pinctrl-0 = <&pinctrl_rgmii1_default>;
+-};
+-
+-
+-&mac1 {
+-	status = "okay";
+-
+-	phy-mode = "rgmii-rxid";
+-	phy-handle = <&ethphy1>;
+-
+-	pinctrl-names = "default";
+-	pinctrl-0 = <&pinctrl_rgmii2_default>;
+-};
+-
+-&mac2 {
+-	status = "okay";
+-
+-	phy-mode = "rgmii";
+-	phy-handle = <&ethphy2>;
+-
+-	pinctrl-names = "default";
+-	pinctrl-0 = <&pinctrl_rgmii3_default>;
+-};
+-
+-&mac3 {
+-	status = "okay";
+-
+-	phy-mode = "rgmii";
+-	phy-handle = <&ethphy3>;
+-
+-	pinctrl-names = "default";
+-	pinctrl-0 = <&pinctrl_rgmii4_default>;
+-};
+-
+ &emmc_controller {
+ 	status = "okay";
+ };
+@@ -263,8 +186,24 @@ &i2c9 {
+ 	status = "okay";
+ };
+ 
++&i2c11 {
++	status = "okay";
++	U43_fru@51 {
++		compatible = "atmel,24c128";
++		reg = <0x51>;
++	};
++	BSM_fru@54 {
++		compatible = "atmel,24c128";
++		reg = <0x54>;
++	};
++};
++
+ &i2c12 {
+ 	status = "okay";
++	tmp75@4f {
++		compatible = "ti,tmp75";
++		reg = <0x4f>;
++	};
+ };
+ 
+ &i2c13 {
