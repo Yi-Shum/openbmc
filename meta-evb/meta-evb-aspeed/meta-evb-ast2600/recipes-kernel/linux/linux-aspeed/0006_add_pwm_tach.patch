@@ -1,0 +1,97 @@
+diff --git a/arch/arm/boot/dts/aspeed-ast2600-evb.dts b/arch/arm/boot/dts/aspeed-ast2600-evb.dts
+index d385a85..788a615 100644
+--- a/arch/arm/boot/dts/aspeed-ast2600-evb.dts
++++ b/arch/arm/boot/dts/aspeed-ast2600-evb.dts
+@@ -7,7 +7,7 @@
+ #include <dt-bindings/gpio/aspeed-gpio.h>
+ 
+ / {
+-	model = "AST2600 EVB 0830";
++	model = "AST2600 EVB 0831";
+ 	compatible = "aspeed,ast2600-evb", "aspeed,ast2600";
+ 
+ 	aliases {
+@@ -82,6 +82,15 @@ vccq_sdhci1: regulator-vccq-sdhci1 {
+ 		states = <3300000 1>,
+ 			 <1800000 0>;
+ 	};
++	pwm-fan0 {
++		compatible = "pwm-fan";
++		pwms = <&pwm 0 40000 0>;        /* Target freq:25 kHz */
++	};
++
++	pwm-fan1 {
++		compatible = "pwm-fan";
++		pwms = <&pwm 1 40000 0>;        /* Target freq:25 kHz */
++	};
+ };
+ 
+ &emmc_controller {
+@@ -303,3 +312,67 @@ &mac3 {
+ 	ncsi-rexmit = <1>;
+ 	ncsi-timeout = <2>;
+ };
++
++&pwm {
++	status = "okay";
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_pwm0_default &pinctrl_pwm1_default
++		&pinctrl_pwm2_default &pinctrl_pwm3_default>;
++};
++
++&tach {
++	status = "okay";
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_tach0_default &pinctrl_tach1_default
++		&pinctrl_tach2_default &pinctrl_tach3_default
++		&pinctrl_tach4_default &pinctrl_tach5_default
++		&pinctrl_tach6_default &pinctrl_tach7_default>;
++
++	tach0-I@0 {
++		reg = <0x00>;
++		aspeed,pulse-pr = <2>;
++		aspeed,min-rpm = <700>;
++	};
++
++	tach0-O@1 {
++		reg = <0x01>;
++		aspeed,pulse-pr = <2>;
++		aspeed,min-rpm = <700>;
++	};
++
++	tach1-I@2 {
++		reg = <0x02>;
++		aspeed,pulse-pr = <2>;
++		aspeed,min-rpm = <700>;
++	};
++
++	tach1-O@3 {
++		reg = <0x03>;
++		aspeed,pulse-pr = <2>;
++		aspeed,min-rpm = <700>;
++	};
++
++	tach2-I@4 {
++		reg = <0x04>;
++		aspeed,pulse-pr = <2>;
++		aspeed,min-rpm = <700>;
++	};
++
++	tach2-O@5 {
++		reg = <0x05>;
++		aspeed,pulse-pr = <2>;
++		aspeed,min-rpm = <700>;
++	};
++
++	tach3-I@6 {
++		reg = <0x06>;
++		aspeed,pulse-pr = <2>;
++		aspeed,min-rpm = <700>;
++	};
++
++	tach3-O@7 {
++		reg = <0x07>;
++		aspeed,pulse-pr = <2>;
++		aspeed,min-rpm = <700>;
++	};
++};

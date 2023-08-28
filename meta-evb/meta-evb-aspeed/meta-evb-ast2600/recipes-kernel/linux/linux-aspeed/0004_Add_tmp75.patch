@@ -7,7 +7,7 @@ index de83c0eb1d6e..dbc2e89eb746 100644
  
  / {
 -	model = "AST2600 EVB";
-+	model = "AST2600 EVB 0726";
++	model = "AST2600 EVB 0830";
  	compatible = "aspeed,ast2600-evb", "aspeed,ast2600";
  
  	aliases {
