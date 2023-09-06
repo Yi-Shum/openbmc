@@ -1,0 +1,24 @@
+[
+  {
+    "Desc": {
+      "Name": "Virtual_Inlet_Temp",
+      "SensorType": "temperature"
+    },
+    "Threshold": {
+      "CriticalHigh": 50,
+      "CriticalLow": 0
+    },
+    "Params": {
+      "DbusParam": [
+        {
+          "ParamName": "outlet_temp",
+          "Desc": {
+            "Name": "Temp_Outlet",
+            "SensorType": "temperature"
+          }
+        }
+      ]
+    },
+    "Expression": "outlet_temp + 5"
+  }
+]

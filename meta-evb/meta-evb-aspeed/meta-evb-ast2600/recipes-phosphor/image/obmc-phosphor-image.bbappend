@@ -1,1 +1,3 @@
-OBMC_IMAGE_EXTRA_INSTALL:append = " phosphor-pid-control"
+OBMC_IMAGE_EXTRA_INSTALL:append = " phosphor-pid-control \
+    phosphor-virtual-sensor \
+"
